@@ -1,0 +1,15 @@
+redis==2.10.6
+redis-py-cluster
+Flask
+Flask-Cors
+Flask-MySQL
+Flask-Redis
+cx_Oracle
+PyMySQL
+pandas
+numpy
+scipy
+scikit-learn
+matplotlib
+plotly
+Uwsgi
