@@ -1,24 +1,30 @@
 console.log('--------js log start-------------------')
 var files
 $('input[type=file]').change(function(e){
-fn=e.target.files[0].name
+files = e.target.files
+fn=files[0].name
 $($(this).next()[0]).text(fn)
-files = event.target.files
 })
 
 $('#sbt1').click(sbt1f)
 
-function sbt1f(){console.log('1111111111111')
 
+function sbt1f(){console.log('1111111111111')
+console.log(files)
 
     var data = new FormData();
-    $.each(files, function(key, value)
+    $.each(files, function(k,v)
     {
-        data.append(key, value);
+        data.append('file', v);
+
+        console.log(v)
+        console.log('######3')
     });
 
+console.log(data)
+
  $.ajax({
-        url: 'submit.php?files',
+        url: 'data-analyst/upload-file',
         type: 'POST',
         data: data,
         cache: false,
@@ -30,7 +36,8 @@ function sbt1f(){console.log('1111111111111')
             if(typeof data.error === 'undefined')
             {
                 // Success so call function to process the form
-                submitForm(event, data);
+                //submitForm(event, data);
+                console.log('success uploaded!')
             }
             else
             {
