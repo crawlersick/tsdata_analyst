@@ -2,6 +2,13 @@ console.log('--------js log start-------------------')
 var files
 $('input[type=file]').change(function(e){
 files = e.target.files
+console.log(files)
+if(typeof files === 'undefined' || files.length==0  )
+{
+console.log('changed file empty return')
+return
+}
+
 fn=files[0].name
 $($(this).next()[0]).text(fn)
 })
@@ -9,7 +16,16 @@ $($(this).next()[0]).text(fn)
 $('#sbt1').click(sbt1f)
 
 
+
 function sbt1f(){console.log('1111111111111')
+
+if(typeof files === 'undefined' || files.length==0 )
+{
+console.log('submit file empty return')
+return
+}
+
+
 console.log(files)
 
     var data = new FormData();
