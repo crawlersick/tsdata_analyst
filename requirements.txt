@@ -13,3 +13,4 @@ scikit-learn
 matplotlib
 plotly
 Uwsgi
+flasgger
