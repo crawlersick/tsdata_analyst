@@ -256,13 +256,9 @@ def get_sample_table(param1,param2):
     vdf = pd.DataFrame([('a1','a2'),('b1','b2')], columns=['aa', 'bb'])
     return vdf
 
+
 if __name__ == '__main__':
     # Sample annotation reader : add_annotation_reader('midnights', lambda query_string, ts_range: pd.Series(index=pd.date_range(ts_range['$gt'], ts_range['$lte'], freq='D', normalize=True)).fillna('Text for annotation - midnight'))
-    # Sample timeseries reader : 
-    #    def get_sine(freq, ts_range):
-    #            freq = int(freq)
-    #            ts = pd.date_range(ts_range['$gt'], ts_range['$lte'], freq='H')
-    #            return pd.Series(np.sin(np.arange(len(ts)) * np.pi * freq * 2 / float(len(ts))), index=ts).to_frame('value')
     add_reader('sine_wave', get_sine)
     add_reader('sample_table', get_sample_table)
     add_finder('sine_wave', get_a_list)
