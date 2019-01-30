@@ -104,3 +104,4 @@ uploads/
 # mypy
 .mypy_cache/
 .idea/
+*.tar.gz
