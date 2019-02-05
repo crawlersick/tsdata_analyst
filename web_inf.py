@@ -1,3 +1,6 @@
+import random
+import string
+import pandas as pd
 from flask import Flask, render_template, url_for
 from flask import jsonify
 import os
@@ -44,9 +47,14 @@ def upload_file():
             print('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
+            #filename = secure_filename(file.filename)
+            data=pd.read_csv(file)
+            print(data)
+            size=random.randint(8, 15)
+            filename = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(size))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            resp = jsonify(success=True)
+            resp = jsonify(filename=filename, success=True)
+
             return resp
             #return redirect(url_for('uploaded_file',filename=filename))
     return 'testing'

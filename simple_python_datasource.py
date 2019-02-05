@@ -264,5 +264,4 @@ if __name__ == '__main__':
     add_finder('sine_wave', get_a_list)
     # To query the wanted reader, use `<reader_name>:<query_string>`, e.g. 'sine_wave:24' 
     # http://flasgger.pythonanywhere.com/
-
     app.run(host='0.0.0.0', port=3003, debug=True)

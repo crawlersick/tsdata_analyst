@@ -3,10 +3,16 @@ var files
 $('input[type=file]').change(function(e){
 files = e.target.files
 console.log(files)
-if(typeof files === 'undefined' || files.length==0  )
+if(typeof files === 'undefined' || files.length==0   )
 {
 console.log('changed file empty return')
 return
+}
+
+if(files[0].size > 307200){
+       alert("File is too big!")
+       files=null
+       return
 }
 
 fn=files[0].name
@@ -19,7 +25,7 @@ $('#sbt1').click(sbt1f)
 
 function sbt1f(){console.log('1111111111111')
 
-if(typeof files === 'undefined' || files.length==0 )
+if(files === null || typeof files === 'undefined' || files.length==0 )
 {
 console.log('submit file empty return')
 return
@@ -37,7 +43,7 @@ console.log(files)
         console.log('######3')
     });
 
-console.log(data)
+//console.log(data)
 
  $.ajax({
         url: 'data-analyst/upload-file',
@@ -54,6 +60,9 @@ console.log(data)
                 // Success so call function to process the form
                 //submitForm(event, data);
                 console.log('success uploaded!')
+                $('#returntext').text(data.filename)
+                $('#exampleModalCenter').modal('show')
+                console.log(data.filename)
             }
             else
             {

@@ -105,3 +105,4 @@ uploads/
 .mypy_cache/
 .idea/
 *.tar.gz
+grafanaplugins/
