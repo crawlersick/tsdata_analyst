@@ -47,16 +47,16 @@ def upload_file():
             print('No selected file')
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            #filename = secure_filename(file.filename)
-            data=pd.read_csv(file)
+            # filename = secure_filename(file.filename)
+            data = pd.read_csv(file)
             print(data)
-            size=random.randint(8, 15)
+            size = random.randint(8, 15)
             filename = ''.join(random.choice(string.ascii_uppercase + string.digits) for _ in range(size))
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             resp = jsonify(filename=filename, success=True)
 
             return resp
-            #return redirect(url_for('uploaded_file',filename=filename))
+            # return redirect(url_for('uploaded_file',filename=filename))
     return 'testing'
 
 
@@ -64,6 +64,15 @@ def upload_file():
 def uploaded_file(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'],
                                filename)
+
+
+@app.route('/fake4a')
+def fake4a():
+    arg1 = request.values.get('service')
+    if arg1 is None:
+        return 'need service as parameter !'
+    # print(arg1)
+    return redirect(arg1+'?ticket=A123B456C789')
 
 
 if __name__ == '__main__':
